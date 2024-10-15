@@ -197,7 +197,7 @@ let compras = [
 ```
 
 
-# **PRINCIPAIS FUNÇÕES DOS ARRAYS EM JAVASCRIPT**
+# **PRINCIPAIS FUNÇÕES DOS ARRAYS**
 
 
 # ADIÇÃO E INSERÇÃO
@@ -317,6 +317,11 @@ console.log(evens); // Saída: [2, 4]
 ```
 
 - `reduce(callback, initialValue)`: Executa uma função reducer para cada elemento do array, resultando num único valor de retorno.
+```js
+let numeros = [5, 12, 7, 3, 20];
+let maximo = numeros.reduce((acumulador, valorAtual) => Math.max(acumulador, valorAtual));
+console.log(maximo); // Saída: 20
+```
 
 
 # CÓPIA E EXTENSÃO
@@ -536,3 +541,463 @@ let pessoa2 = Object.assign({}, pessoa);  // Clona pessoa
 let pessoa3 = { ...pessoa };  // Clona pessoa de outra forma
 ```
 Esses métodos copiam as propriedades de um objeto para outro. No entanto, se o objeto contiver outros objetos (objetos aninhados), isso cria uma **cópia superficial**, e as referências internas ainda apontam para os mesmos lugares na memória.
+
+
+
+
+# **FUNÇÕES**
+
+### O que é uma função?
+
+Em JavaScript, **função** é como uma **receita** que descreve uma série de passos a serem seguidos para realizar uma tarefa. Assim como você tem receitas na cozinha para preparar comidas, no código você cria funções para executar ações específicas.
+
+**Exemplo de uma função em JavaScript:**
+```js
+function fazerSanduiche() {
+    console.log("Pegar o pão");
+    console.log("Passar manteiga");
+    console.log("Colocar presunto e queijo");
+    console.log("Fechar o pão");
+}
+```
+Aqui, `fazerSanduiche` é uma função que agrupa todos os passos para fazer um sanduíche. A cada vez que você **chama** essa função (ou seja, executa ela), esses passos serão seguidos.
+
+
+
+# CRIANDO E CHAMANDO FUNÇÕES
+
+No JS, você pode **declarar** uma função e, em seguida, **chamá-la** quando precisar que ela faça seu trabalho.
+
+1. **Declarar** uma função é como escrever a receita.
+2. **Chamar** uma função é como seguir a receita para fazer algo de verdade.
+
+Veja como isso funciona:
+
+#### Declarando a função:
+```js
+function saudacao() {
+    console.log("Olá, mundo!");
+}
+```
+Aqui, nós apenas escrevemos a receita. Ela não faz nada por conta própria até que seja chamada.
+
+#### Chamando a função:
+```js
+saudacao();  // Output: Olá, mundo!
+```
+A função `saudacao` é chamada aqui, o que resulta na impressão da mensagem “Olá, mundo!” no console.
+
+
+
+# FUNÇÕES COM PARÂMETROS (OU ARGUMENTOS)
+
+Agora imagine que você quer uma receita que possa fazer **diferentes tipos de sanduíches**. Para isso, você precisaria ajustar os ingredientes de acordo com a preferência de quem vai comer. Na programação, isso é feito passando **parâmetros** para as funções.
+
+```js
+function fazerSanduiche(ingrediente1, ingrediente2) {
+    console.log(`Colocar ${ingrediente1} e ${ingrediente2} no pão`);
+}
+```
+Agora, essa função aceita dois ingredientes como parâmetros, o que nos permite fazer sanduíches diferentes ao **chamar a função** com valores diferentes.
+
+#### Chamando a função com argumentos:
+```js
+fazerSanduiche("presunto", "queijo");  // Output: Colocar presunto e queijo no pão
+fazerSanduiche("frango", "alface");    // Output: Colocar frango e alface no pão
+```
+
+
+
+# FUNÇÕES QUE RETORNAM VALORES
+
+Até agora, nossas funções estão apenas **fazendo algo** (como imprimir uma mensagem), mas elas também podem **retornar um valor** para o código que chamou a função. Isso é útil quando você quer que a função execute algum cálculo ou transformação e devolva o resultado.
+
+#### Exemplo:
+```js
+function soma(a, b) {
+    return a + b;
+}
+```
+A função `soma` pega dois números como argumentos e retorna a soma desses números.
+
+#### Chamando e usando o valor retornado:
+```js
+let resultado = soma(5, 7);  // resultado será 12
+console.log(resultado);      // Output: 12
+```
+
+
+
+# FUNÇÕES COMO VALORES (FUNÇÕES ANÔNIMAS)
+
+Em JavaScript, funções também são consideradas "cidadãos de primeira classe", o que significa que você pode tratá-las como qualquer outro valor, como números ou strings. Isso é como se, além de seguir a receita, você pudesse entregar a receita para outra pessoa preparar.
+
+Por exemplo, você pode armazenar uma função dentro de uma variável:
+```js
+let saudacao = function() {
+    console.log("Olá!");
+};
+
+saudacao();  // Output: Olá!
+```
+Essa é uma **função anônima**, pois não tem nome próprio, mas está atribuída à variável `saudacao`. Você pode chamá-la através dessa variável.
+
+
+
+# ARROW FUNCTIONS
+
+No ES6, uma nova sintaxe chamada "arrow function" foi introduzida para tornar a escrita de funções mais compacta. Ela tem o seguinte formato:
+
+#### Exemplo com Arrow Function:
+```js
+let saudacao = () => {
+    console.log("Olá, mundo!");
+};
+```
+Se a função for simples e tiver apenas uma linha, você pode simplificá-la ainda mais:
+```js
+let soma = (a, b) => a + b;
+```
+Aqui, `soma` é uma função que aceita dois argumentos `a` e `b` e retorna a soma deles. A sintaxe da arrow function ajuda a escrever funções de maneira mais concisa, especialmente quando você está lidando com código curto.
+
+**Use as Arrow Functions para funções curtas. Use as funções normais quando quiser ter mais controle sobre seu código.**
+
+
+
+# ESCOPO DAS FUNÇÕES
+
+O **escopo** de uma função define onde as variáveis podem ser acessadas. Dentro de uma função, você pode definir variáveis que são "privadas" para aquela função. Essas variáveis não podem ser acessadas fora da função.
+
+#### Exemplo de Escopo:
+```js
+function exemploEscopo() {
+    let mensagem = "Estou dentro da função!";
+    console.log(mensagem);  // Isso funciona
+}
+
+console.log(mensagem);  // Erro! mensagem não está definida fora da função
+```
+O JavaScript define dois tipos principais de escopo:
+
+- **Escopo local**: variáveis definidas dentro de uma função só podem ser usadas dentro dela.
+- **Escopo global**: variáveis definidas fora de qualquer função podem ser usadas em qualquer lugar do código.
+
+
+
+# FUNÇÕES DE CALLBACK
+
+Um conceito avançado e muito útil é o de **funções de callback**. Uma função de callback é uma função passada como argumento para outra função, e então é chamada (ou "invocada") dentro da função "externa" em algum momento.
+
+Pense nisso como se você estivesse delegando uma tarefa para outra pessoa: você diz "Quando terminar, me avise e me diga o resultado". A função principal é quem faz a tarefa, e o callback é a função que vai ser executada quando essa tarefa terminar.
+
+#### Exemplo de Callback:
+```js
+function processarEntrada(usuario, callback) {
+    console.log(`Processando o usuário: ${usuario}`);
+    callback();
+}
+
+function saudacao() {
+    console.log("Bem-vindo!");
+}
+
+processarEntrada("João", saudacao);  
+// Output: Processando o usuário: João
+// Output: Bem-vindo!
+```
+Neste exemplo, `processarEntrada` recebe uma função como argumento e a executa depois de fazer algo. Isso é muito útil em JavaScript, especialmente quando lidamos com operações assíncronas como leitura de arquivos ou chamadas de rede.
+
+
+
+# FUNÇÕES CONSTRUTORAS
+
+Funções construtoras em JavaScript são uma maneira especial de criar e inicializar objetos. Elas são essencialmente funções normais, mas, quando usadas com a palavra-chave `new`, permitem criar um novo objeto com propriedades e comportamentos específicos.
+
+### Analogia: Um molde para criar objetos
+
+Imagine que você vai abrir uma fábrica de brinquedos. Para produzir os brinquedos de maneira padronizada, você não vai criar cada um manualmente; em vez disso, você cria um **molde**. Esse molde define como cada brinquedo vai se parecer e funcionar, e, toda vez que você quiser um novo brinquedo, você usa o molde para produzir mais exemplares.
+
+No mundo do JavaScript, as **funções construtoras** são como esse molde. Elas definem como um determinado tipo de objeto deve ser criado e como ele vai se comportar.
+
+### Como funciona na prática:
+
+1. **Definir a função construtora:** Uma função construtora é uma função que serve como molde para novos objetos. Por convenção, ela começa com letra maiúscula, para que fique claro que ela é usada para criar objetos.
+2. **Usar `this`:** Dentro da função construtora, o `this` representa o novo objeto que está sendo criado. Você pode usar o `this` para atribuir propriedades e métodos ao objeto.
+3. **Criar novos objetos com `new`:** Quando você usa a palavra-chave `new` seguida da função construtora, o JavaScript cria um novo objeto, chama a função construtora e retorna esse objeto.
+
+### Exemplo básico:
+
+Imagine que queremos criar um "molde" para um objeto que representa uma pessoa, com nome e idade.
+```js
+function Pessoa(nome, idade) {
+  this.nome = nome;  // O "this" se refere ao objeto que será criado
+  this.idade = idade;
+  
+  this.falar = function() {
+    console.log(`Oi, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+  }
+}
+```
+Aqui temos uma função construtora chamada `Pessoa`. Ela define que todo objeto criado a partir dela terá as propriedades `nome`, `idade` e um método `falar`.
+
+Agora, podemos criar novas pessoas (novos objetos) usando essa função construtora:
+```js
+const pessoa1 = new Pessoa('João', 25);
+const pessoa2 = new Pessoa('Maria', 30);
+
+pessoa1.falar();  // Oi, meu nome é João e tenho 25 anos.
+pessoa2.falar();  // Oi, meu nome é Maria e tenho 30 anos.
+```
+
+
+# Passo a passo do que acontece ao usar `new`:
+
+1. **Criação de um objeto vazio:** Quando você chama `new Pessoa('João', 25)`, um novo objeto vazio é criado.
+2. **Atribuição do `this`:** Dentro da função `Pessoa`, o `this` é automaticamente associado ao novo objeto criado.
+3. **Inicialização das propriedades:** As propriedades `nome` e `idade` são atribuídas ao novo objeto com os valores fornecidos.
+4. **Retorno do objeto:** No final, o objeto preenchido é retornado automaticamente, mesmo sem precisar usar `return`.
+
+
+# Por que usar funções construtoras?
+
+Funções construtoras facilitam a criação de múltiplos objetos com a mesma estrutura, como se fossem cópias padronizadas, mas cada uma com suas próprias particularidades. É como criar vários brinquedos iguais, mas com cores ou tamanhos diferentes.
+
+Por exemplo, a função `Pessoa` nos permite criar quantas pessoas quisermos, cada uma com seu próprio nome e idade, mas todas com o método `falar`, que funciona do mesmo jeito.
+
+
+# Diferença de uma função "normal":
+
+- Quando você chama uma função normal, ela simplesmente executa o código e, se houver um `return`, ela retorna o valor.
+- Quando você usa uma **função construtora** com `new`, o JavaScript faz algumas coisas nos bastidores: cria um novo objeto, vincula o `this` a esse objeto e retorna o objeto automaticamente.
+
+
+# Protótipos e Funções Construtoras
+
+Um ponto importante relacionado às funções construtoras é o **prototype**. Todos os objetos criados por uma função construtora herdam propriedades e métodos do seu protótipo. Isso permite economizar memória quando vários objetos compartilham o mesmo método.
+Por exemplo:
+```js
+function Pessoa(nome, idade) {
+  this.nome = nome;
+  this.idade = idade;
+}
+
+Pessoa.prototype.falar = function() {
+  console.log(`Oi, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+}
+
+const pessoa1 = new Pessoa('João', 25);
+const pessoa2 = new Pessoa('Maria', 30);
+
+pessoa1.falar();  // Oi, meu nome é João e tenho 25 anos.
+pessoa2.falar();  // Oi, meu nome é Maria e tenho 30 anos.
+```
+Nesse caso, o método `falar` está no protótipo de `Pessoa`, então ele é compartilhado por todas as instâncias de `Pessoa`, economizando memória, porque não precisa ser recriado para cada objeto.
+
+
+
+# FUNÇÕES COM PARÂMETROS COM PARÂMETROS INDEFINIDOS OU OPCIONAIS
+
+
+# Parâmetros Opcionais
+
+JavaScript permite definir valores padrões para **parâmetros opcionais**:
+```js
+function cumprimentar(nome, saudacao = "Olá") {
+    console.log(`${saudacao}, ${nome}!`);
+}
+
+cumprimentar("Maria");  // Olá, Maria!
+cumprimentar("Maria", "Bom dia");  // Bom dia, Maria!
+```
+
+
+# Parâmetros Indefinidos com Rest Parameters (ES6+)
+
+A partir do ES6, JavaScript introduziu os parâmetros de resto (rest parameters), que são equivalentes ao `*args` do Python:
+```js
+function soma(...numeros) {
+    return numeros.reduce((total, numero) => total + numero, 0);
+}
+
+console.log(soma(1, 2, 3));  // 6
+console.log(soma(5, 10, 15, 20));  // 50
+```
+**Analogia para JavaScript**: O `...numeros` é como uma linha de produção onde você pode enviar quantos itens quiser e eles serão processados um a um. O `arguments` é uma forma mais antiga de capturar todos os itens, mas não tem a mesma flexibilidade dos parâmetros rest.
+
+
+# Parâmetros Indefinidos com `arguments`
+
+Antes do ES6, podíamos usar o objeto `arguments` para capturar todos os argumentos passados para uma função, independentemente de quantos fossem.
+```js
+function soma() {
+    let total = 0;
+    for (let i = 0; i < arguments.length; i++) {
+        total += arguments[i];
+    }
+    return total;
+}
+
+console.log(soma(1, 2, 3));  // 6
+console.log(soma(5, 10, 15, 20));  // 50
+```
+
+
+
+
+# **MODULARIZAÇÃO**
+
+Modularização em JavaScript é um conceito essencial para organizar o código em partes menores e mais manejáveis, tornando-o mais fácil de manter, reutilizar e escalar. Imagine que você está construindo uma casa. Ao invés de construir tudo de uma vez e deixar cada cômodo conectado diretamente com os outros, você pode dividir a casa em módulos: cozinha, sala, quartos, banheiros. Cada módulo (ou cômodo) tem uma função específica, mas todos podem interagir uns com os outros. Da mesma forma, modularização em JavaScript é como dividir uma aplicação em pequenos “cômodos”, ou arquivos, cada um com um propósito claro.
+
+
+# Por que modularizar?
+
+Antes de falarmos dos detalhes técnicos como `export` e `import`, é importante entender o "porquê" da modularização. Modularizar traz várias vantagens:
+
+1. **Reutilização de Código**: Ao dividir funcionalidades em módulos independentes, você pode reutilizar esses blocos em diferentes partes da sua aplicação ou até em diferentes projetos.
+2. **Organização**: Com módulos, seu código fica mais organizado. Em vez de um único arquivo gigante, você tem vários arquivos pequenos, cada um cuidando de uma parte específica.
+3. **Manutenção e Escalabilidade**: Fica mais fácil corrigir bugs ou adicionar novas funcionalidades quando seu código está dividido em partes pequenas e especializadas.
+4. **Colaboração**: Em grandes equipes, diferentes membros podem trabalhar em diferentes módulos, o que facilita o trabalho colaborativo.
+
+
+
+
+# `export` E `import`
+
+
+
+## `export`: "COMPARTILHANDO" O QUE VOCÊ QUER QUE OUTROS USEM
+
+Quando você cria um módulo (ou seja, um arquivo de JavaScript com uma parte do código), você geralmente não quer expor tudo o que está lá dentro para o mundo. Apenas algumas partes do módulo são úteis para outros módulos. Para isso, usamos o `export`.
+
+### Analogia:
+
+Imagine que você tem uma loja de ferramentas, e o que você deixa à venda são só algumas ferramentas específicas. O cliente (outro módulo) pode vir e escolher entre as ferramentas que você decide colocar à disposição. `export` é como deixar certas ferramentas na prateleira para os clientes pegarem.
+
+
+## Tipos de `export`
+
+1. **Export Nomeado (`Named Export`)**: Você pode exportar várias funções, variáveis ou classes, cada uma com seu próprio nome. Imagine que você tem várias "ferramentas" (funções, variáveis, etc.) que você quer deixar disponíveis de forma identificável para outros módulos.
+```js
+// arquivo mathTools.js
+export function add(a, b) {
+    return a + b;
+}
+
+export function subtract(a, b) {
+    return a - b;
+}
+```
+Aqui, estamos exportando duas funções, `add` e `subtract`, de forma nomeada. Outros arquivos podem escolher qual delas querem usar.
+
+
+2. **Export Default**: Às vezes, um módulo pode ter uma única funcionalidade principal. Nesse caso, você pode exportar um "default" (padrão), o que facilita a importação.
+```js
+// arquivo multiply.js
+export default function multiply(a, b) {
+    return a * b;
+}
+```
+Nesse caso, estamos dizendo que a função `multiply` é a exportação principal do arquivo.
+
+
+
+##  `import`: "PEGANDO" O QUE VOCÊ PRECISA
+
+Agora que você já expôs certas funcionalidades com `export`, outro módulo pode "pegar" essas funcionalidades usando `import`. O `import` permite que você traga funções, variáveis ou classes de outros arquivos para o seu.
+
+### Analogia:
+
+Voltando à nossa loja de ferramentas, o `import` seria como você pegar as ferramentas da prateleira que foram disponibilizadas. Você só pode pegar o que foi "exportado" (colocado na prateleira), e você precisa dizer qual ferramenta quer.
+
+
+## Tipos de `import`
+
+1. **Import Nomeado**: Se você usou `export` nomeado, vai usar o nome específico ao importar.
+```js
+// arquivo main.js
+import { add, subtract } from './mathTools.js';
+
+console.log(add(5, 3));       // 8
+console.log(subtract(10, 4)); // 6
+```
+Aqui, estamos importando especificamente as funções `add` e `subtract` do arquivo `mathTools.js`. A sintaxe usa `{}` para indicar quais funcionalidades estamos "pegando".
+
+2. **Import Default**: Se o módulo exporta uma única funcionalidade padrão (com `export default`), você pode importar essa funcionalidade sem o uso de chaves `{}`.
+```js
+// arquivo main.js
+import multiply from './multiply.js';
+
+console.log(multiply(5, 4));  // 20
+```
+Como `multiply` foi exportado como o "default" do arquivo, não precisamos especificar o nome entre chaves. O nome da variável `multiply` aqui pode ser qualquer um, já que estamos lidando com o padrão, mas é comum manter o mesmo nome para clareza.
+
+
+
+
+# MODULARIZAÇÃO EM PRÁTICA
+
+Agora, vamos ver como podemos estruturar um projeto modularizado simples:
+
+
+## 1. Dividindo em Arquivos
+
+Imagine que você está criando uma calculadora básica. Ao invés de colocar todas as operações (adição, subtração, multiplicação, divisão) em um único arquivo, você pode modularizar assim:
+
+- `add.js` – contém a função de adição
+- `subtract.js` – contém a função de subtração
+- `multiply.js` – contém a função de multiplicação
+- `divide.js` – contém a função de divisão
+
+
+## 2. Exportando as Funções
+
+Em cada um desses arquivos, você exporta a função correspondente:
+
+**add.js**
+```js
+export function add(a, b) {
+   return a + b;
+}
+```
+
+**subtract.js**
+```js
+export function subtract(a, b) {
+   return a - b;
+}
+```
+
+**multiply.js**
+```js
+export default function multiply(a, b) {
+   return a * b;
+}
+```
+
+
+## 3. Importando no Arquivo Principal
+
+Agora, no arquivo principal da calculadora, você importa todas as funções e as utiliza:
+```js
+// main.js
+import { add, subtract } from './add.js';
+import multiply from './multiply.js';
+
+console.log(add(2, 3));       // 5
+console.log(subtract(7, 2));  // 5
+console.log(multiply(3, 4));  // 12
+```
+Perceba que, com a modularização, conseguimos separar cada função em um arquivo independente e depois usá-las no arquivo principal.
+
+
+
+
+# RESUMO
+
+1. **Modularização** em JavaScript é como dividir seu código em partes pequenas (módulos), cada uma com uma função específica.
+2. **Export** é como disponibilizar (ou "colocar na prateleira") funções, variáveis ou classes para outros arquivos usarem.
+    - `export default` serve para exportar algo como principal de um módulo.
+    - `export` nomeado permite exportar várias partes de um módulo de uma vez.
+3. **Import** é como pegar algo que foi exportado de outro arquivo, seja de forma nomeada ou padrão.
+    - `import { add } from './add.js'` para pegar algo nomeado.
+    - `import multiply from './multiply.js'` para pegar algo exportado como padrão.
