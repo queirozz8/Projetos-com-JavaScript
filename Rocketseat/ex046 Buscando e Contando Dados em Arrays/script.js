@@ -25,7 +25,7 @@ const booksByCategory = [
             },
             {
                 title: 'Pai rico, pai pobre',
-                author: 'Robert T. Kiyosaki e Sharon L. Lechter'
+                author: 'Robert T. Kiyosaki'
             }
         ]
     },
@@ -59,20 +59,20 @@ console.log(`Total de categorias: ${totalCategories}`)
 
 // O número de livros em cada categoria
 for(let category of booksByCategory) {
-    console.log(`Total de livros da categoria ${booksByCategory.indexOf(category) + 1}: ${category.books.length}.`)
+    console.log(`Total de livros da categoria ${category.category}: ${category.books.length}.`)
 }
 
 
 // Contar o número de autores
 let authors = []
 for(let category of booksByCategory) {
-    for(let author of category.books) {
-        if(authors.includes(author.author) == false) {
-            authors.push(author.author)
+    for(let book of category.books) {
+        if(authors.includes(book.author) == false) {
+            authors.push(book.author)
         }
     }
 }
-console.log(`Total de autores: ${authors.join(' | ')}, número: ${authors.length} autores.`)
+console.log(`Total de autores: ${authors.join(' | ')} | quantidade: ${authors.length} autores.`)
 
 
 // Mostrar livros do autor Augusto Cury
@@ -98,8 +98,8 @@ function authorBookCounter(author) {
         }
     }
 
-    return authorBooks
+    return `*Função*  Total de livros do autor ${author}: ${authorBooks.join(' | ')} | Quantidade: ${authorBooks.length}.`
 }
 
 // Uso da função
-console.log(authorBookCounter('T. Harv Eker'))
+console.log(authorBookCounter('George S. Clason'))
