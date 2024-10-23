@@ -1,0 +1,11 @@
+/* Definindo o estilo padrão do site */
+body {
+    background-color: white;
+    color: black;
+}
+
+/* Quando o modo escuro estiver ativado */
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
