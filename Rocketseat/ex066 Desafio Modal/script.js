@@ -1,14 +1,9 @@
-let modalWrapper = document.getElementById('modal-wrapper')
-let buttonOpenModal = document.querySelector('button')
+function openModal() {
+    document.querySelector('.modal-wrapper').classList.remove('invisible')
 
-document.addEventListener('keydown', function(event) {
-    const isEscKey = event.key === 'Escape'
-    
-    if (isEscKey && !modalWrapper.classList.contains('invisible')) {
-        modalWrapper.classList.add('invisible')
-    }
-})
-
-buttonOpenModal.addEventListener('click', function() {
-    modalWrapper.classList.remove('invisible')
-})
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && !document.querySelector('.modal-wrapper').classList.contains('invisible')) {
+            document.querySelector('.modal-wrapper').classList.add('invisible')
+        }
+    })
+}
