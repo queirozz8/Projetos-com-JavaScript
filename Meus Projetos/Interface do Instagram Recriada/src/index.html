@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Recriado - Login</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/favicon/favicon.png" type="image/x-icon">
+    <script src="script.js"></script>
+</head>
+<body class="flex flex-col w-screen h-screen font-sans">
+    <!-- Div geral -->
+    <div class="flex justify-center items-center w-screen h-screen">
+        <!-- Imagem do celular -->
+        <aside>
+            <img class="relative w-96 h-full right-3 bottom-8 hidden md:block" src="../images/phone.png" alt="Phone with Instagram">
+        </aside>
+        
+        <!-- Conteúdo principal, que contém do formulário até as fotos da Play Store e App Store -->
+        <main class="flex flex-col justify-center items-center">
+            <!-- Formulário, que representa da logo do Instagram até o "Esqueceu a senha?" -->
+            <form class="w-80 h-96 box-content p-5 border border-zinc-300">
+                <!-- Div do conteúdo principal do formulário, dos inputs até o "OU" -->
+                <div class="flex flex-col justify-center items-center gap-4 rounded-sm">
+                    <!-- Div da foto do Instagram -->
+                    <div class="flex justify-center items-center mt-5">
+                        <img class="w-44 h-16" src="../images/instagram_logo.png" alt="Instagram logo">
+                    </div>
+
+                    <!-- Div dos inputs -->
+
+                    <!-- Input de Email -->
+                    <div class="relative">
+                        <input id="email"
+                        class="peer w-72 p-2 border border-zinc-300 rounded-sm focus:outline-none focus:border-zinc-500"
+                        type="email"
+                        placeholder=""
+                        required
+                        title="Por favor preencha este campo.">
+                        
+                        
+                        <label for="email" 
+                        class="absolute left-2 top-2.5 text-sm text-zinc-500 transition-all duration-200 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-zinc-600 peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-zinc-600 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1 cursor-text"
+                        title="Por favor preencha este campo.">
+                        Telefone, nome de usuário ou email</label>
+                    </div>
+
+                    <!-- Input de senha -->
+                    <div class="relative">
+                        <input id="password" 
+                        class="peer w-72 p-2 border border-zinc-300 rounded-sm focus:outline-none focus:border-zinc-500" 
+                        type="password"
+                        placeholder=""
+                        minlength="8"
+                        maxlength="20"
+                        required
+                        title="Por favor preencha este campo."
+                        pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,20}$">
+
+                        <label for="password" 
+                        class="absolute left-2 top-2.5 text-sm text-zinc-500 transition-all duration-200 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-zinc-600 peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-zinc-600 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1 cursor-text"
+                        title="Por favor preencha este campo.">
+                        Senha</label>
+                    </div>
+
+                    <!-- Botão de mostrar senha -->
+                    <button id="togglePassword" type="button" class="absolute mt-custom ml-52 text-zinc-700 hover:text-zinc-400 text-sm">
+                        Mostrar
+                    </button>
+
+                    <!-- Botão de enviar -->
+                    <div class="flex flex-col justify-center items-center">
+                        <button id="submitButton" class="w-72 h-8 rounded-lg bg-button hover:bg-blue-500 text-white disabled:bg-blue-300" disabled>
+                            <strong class="font-semibold">Entrar</strong>
+                        </button>
+
+                        <br>
+
+                        <!-- Parte do "OU" -->
+                        <div class="flex items-center gap-5">
+                            <div class="w-28 h-px border"></div>
+                            <p class="font-semibold text-zinc-500">OU</p>
+                            <div class="w-28 h-px border"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- Parte de logar com o Facebook, e de "Esqueci a senha" -->
+                <div class="flex flex-col justify-center items-center gap-3 p-1">
+                    <a class="flex items-center gap-2 font-semibold text-face" href=""><img class="w-4 h-4 inline" src="../images/facebook_logo.png" alt="Facebook logo"> Entrar com o Facebook</a>
+                    <a class="text-darkBlue" href=""><small>Esqueceu a senha?</small></a>
+                </div>
+            </form>
+
+            <!-- Div para o cadastramento do usuário -->
+            <div class="flex justify-center items-center w-80 box-content py-4 px-5 mt-2 border border-zinc-300">
+                <p>Não tem uma conta? <a class="text-lightBlue" href=""><strong class="font-semibold">Cadastre-se</strong></a></p>
+            </div>
+
+            <br>
+
+            <p>Obtenha o aplicativo.</p>
+
+            <br>
+            
+            <!-- Imagens da Play Store e App Store -->
+            <div class="flex gap-2">
+                <img class="w-36 cursor-pointer" src="../images/google.png" alt="Google Play Download">
+                <img class="w-36 cursor-pointer" src="../images/apple.png" alt="App Store Download">
+            </div>
+        </main>
+    </div>
+
+    <!-- Div do Footer, que faz com que ele suba um pouco do bottom da tela -->
+    <div class="relative bottom-14">
+        <footer class="flex flex-col justify-center items-center text-zinc-500">
+            <!-- Outros links -->
+            <ul class="flex :flex-wrap md:gap-4">
+                <li class="hover:underline"><small><a href="">Meta</a></small></li>
+                <li class="hover:underline"><small><a href="">Sobre</a></small></li>
+                <li class="hover:underline"><small><a href="">Blog</a></small></li>
+                <li class="hover:underline"><small><a href="">Carreiras</a></small></li>
+                <li class="hover:underline"><small><a href="">Ajuda</a></small></li>
+                <li class="hover:underline"><small><a href="">API</a></small></li>
+                <li class="hover:underline"><small><a href="">Privacidade</a></small></li>
+                <li class="hover:underline"><small><a href="">Termos</a></small></li>
+                <li class="hover:underline"><small><a href="">Localizações</a></small></li>
+                <li class="hover:underline"><small><a href="">Instagram Lite</a></small></li>
+                <li class="hover:underline"><small><a href="">Threads</a></small></li>
+                <li class="hover:underline"><small><a href="">Carregamento de contatos e não usuários</a></small></li>
+                <li class="hover:underline"><small><a href="">Meta Verified</a></small></li>
+            </ul>
+
+            <!-- Idioma e Copyright -->
+            <div class="flex gap-4">
+                <p class="cursor-pointer"><small>Português (Brasil) &DownArrow;</small></p>
+                <p><small>&copy;Instagram from Meta</small></p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
