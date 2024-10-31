@@ -1,4 +1,4 @@
-<h1>Meus Softwares desenvolvidos em JavaScript. <img src="https://skillicons.dev/icons?i=js" height="60" alt="JavaScript logo"></h1>
+<h1>Meus Projetos desenvolvidos em JavaScript. <img src="https://skillicons.dev/icons?i=js" height="65" alt="JavaScript logo"></h1>
 
 - "Meus Projetos" é o diretório onde ficam os meus projetos pessoais, é onde ficam os meus maiores projetos.
 
