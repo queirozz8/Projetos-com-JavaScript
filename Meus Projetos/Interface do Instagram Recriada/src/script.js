@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Define a mensagem personalizada quando o input não está correto
     passwordInput.addEventListener('invalid', function () {
-        this.setCustomValidity('Por favor, preencha este campo. Sua senha precisa ter entre 8 e 25 caracteres, 1 letra maiúscula, 1 número e 1 caractere especial.')
+        this.setCustomValidity('Por favor, preencha este campo. Sua senha precisa ter entre 8 e 20 caracteres, 1 letra maiúscula, 1 número e 1 caractere especial.')
     })
     // Limpa a mensagem personalizada quando o usuário começa a digitar
     passwordInput.addEventListener('input', function () {
