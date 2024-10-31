@@ -6,4 +6,6 @@
 
 - "Bloco de Notas de JavaScript" é um bloco de notas que eu criei para estudar JavaScript. Nele, tem minhas anotações que me ajudam a entender melhor essa linguagem de programação. Só um detalhe: se você quiser ler o documento, procure não ler em qualquer bloco de notas, vai ficar um pouco estranho, pois esse documento é escrito em Markdown, então existem elementos que formatação de texto que não vão ser interpretados caso o arquivo .md seja aberto num bloco de notas padrão. Eu recomendo você utilizar o Obsidian (Software que eu escrevi esse bloco de notas) ou o Notion, pois esse problema não acontece.
 
+<h3>(Muitos desses projetos envolvem HTML e CSS também, mas o predominante é o JavaScript.)</h3>
+
 <h1>Mais coisas estão por vir! Obrigado por ler!</h1>
