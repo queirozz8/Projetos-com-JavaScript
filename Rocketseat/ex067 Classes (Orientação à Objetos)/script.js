@@ -1,4 +1,4 @@
-// Orientação à objetos
+// Orientação a objetos
 
 class Poligono {
     constructor(altura, largura) {
