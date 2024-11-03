@@ -1,3 +1,21 @@
+<h1>ENGLISH VERSION</h1>
+
+<h1>My Projects Developed in JavaScript. <img src="https://skillicons.dev/icons?i=js" height="65" alt="JavaScript logo"></h1>
+
+- "My Projects" is the directory where my personal projects are stored; it's where my biggest projects are located.
+
+- "Rocketseat" is the directory where exercises from the Rocketseat Web Development course are kept.
+
+- "JavaScript Notepad" is a notepad I created to study JavaScript. It contains my notes that help me better understand this programming language. One detail: if you want to read the document, please avoid opening it in just any notepad, as it may look a bit strange since this document is written in Markdown. There are text formatting elements that won't be interpreted if the .md file is opened in a standard notepad. I recommend using Obsidian (the software in which I wrote this notepad) or Notion, as this issue does not occur with them.
+
+<h3>(Many of these projects also involve HTML and CSS, but JavaScript is the predominant language.)</h3>
+
+<h1>More things are coming! Thank you for reading!</h1>
+
+#
+
+<h1>VERSÃO EM PTBR</h1>
+
 <h1>Meus Projetos desenvolvidos em JavaScript. <img src="https://skillicons.dev/icons?i=js" height="65" alt="JavaScript logo"></h1>
 
 - "Meus Projetos" é o diretório onde ficam os meus projetos pessoais, é onde ficam os meus maiores projetos.
