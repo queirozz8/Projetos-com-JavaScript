@@ -1,0 +1,14 @@
+{
+  "name": "exercicio-006",
+  "version": "1.0.0",
+  "description": "Projeto para aprendizado",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Henrique Queiroz",
+  "license": "MIT",
+  "dependencies": {
+    "cfonts": "^3.3.0"
+  }
+}
