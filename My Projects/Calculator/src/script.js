@@ -120,6 +120,7 @@ function click(button) {
             break;
         case 'Backspace':
             handleOperator(key)
+            break;
         case 'c':
             input.value = '';
             storedValue = '';
