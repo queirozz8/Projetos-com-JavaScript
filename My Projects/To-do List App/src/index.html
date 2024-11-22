@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do list</title>
+    <link href="../dist/output.css" rel="stylesheet">
+</head>
+<body class="flex flex-col items-center relative top-28 w-screen h-screen overflow-hidden text-textColorDark bg-mainColorDark">
+    <header class="flex flex-col justify-center items-center gap-8 mb-3">
+        <h1 class="text-4xl font-bold">To-do List</h1>
+        <h1 class="text-3xl font-bold" id="phrase">&OpenCurlyDoubleQuote;<strong class="text-4xl font-extrabold inline">Disciplina</strong> é fazer o que não gosta como se você amasse fazer isso.&CloseCurlyDoubleQuote; - Mike Tyson</h1>
+        
+        <div class="flex relative right-[55px] -top-[275px] gap-80">
+            <aside class="border relative right-20">
+                
+            </aside>
+
+            <!-- Botão de modo claro e escuro -->
+            <button id="light-dark-mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </button>
+            
+            <!-- Botão de escolher a linguagem -->
+            <button class="flex gap-2" id="lang-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+                Português Brasileiro/English
+            </button>
+        </div>
+    </header>
+    
+    <div>
+        <input class="w-input h-10 pl-2 border rounded-xl bg-secondaryColorDark border-zinc-500 placeholder-zinc-400" type="text" placeholder="Digite aqui sua tarefa" aria-label="Digite aqui sua tarefa" minlength="1" maxlength="50" id="input">
+        <button class="p-2 border border-zinc-400 rounded-xl bg-buttonColorDark" id="add-task-button">Adicionar tarefa</button>
+    </div>
+
+
+    <main class="flex flex-col flex-wrap justify-center items-center gap-3 h-80 mt-14"></main>
+
+    <script src="script.js"></script>
+</body>
+</html>
