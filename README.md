@@ -2,7 +2,7 @@
 
 <h1>My Projects Developed in JavaScript. <img src="https://skillicons.dev/icons?i=js" height="65" alt="JavaScript logo"></h1>
 
-- "My Projects" is the directory where my personal projects are stored; it's where my biggest projects are located.
+- "My Projects" is the directory where simple projects involving JavaScript that I created for learning are.
 
 - "Rocketseat" is the directory where exercises from the Rocketseat Web Development course are kept.
 
@@ -18,7 +18,7 @@
 
 <h1>Meus Projetos desenvolvidos em JavaScript. <img src="https://skillicons.dev/icons?i=js" height="65" alt="JavaScript logo"></h1>
 
-- "Meus Projetos" é o diretório onde ficam os meus projetos pessoais, é onde ficam os meus maiores projetos.
+- "Meus Projetos" é o diretório onde ficam projetos simples envolvendo JavaScript que eu criei para aprender.
 
 - "Rocketseat" é o diretório onde exercícios do curso de Desenvolvimento Web da Rocketseat estão feitos.
 
