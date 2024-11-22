@@ -46,6 +46,172 @@ Pense no DOM como a planta de uma casa. A planta mostra onde estão as portas, j
 
 
 
+
+# **NODE.JS**
+
+Node.js não é um Framework, ele é um ambiente de execução, como se fosse um "S.O". Ele permite com que você rode JS no Backend também. Ele é muito rápido, e utiliza o V8, igual o JS normal.
+
+
+# EVENT LOOP
+Event Loop é uma ferramenta que o Node possui para lidar com todas as requests. Ele é assíncrono, único e muito rápido.
+
+
+# GLOBALS
+No Node.js, o termo "globals" refere-se a um conjunto de variáveis, objetos e funções que estão disponíveis globalmente, ou seja, podem ser acessados de qualquer lugar do código sem necessidade de serem importados ou declarados explicitamente. Esses elementos globais são parte do ambiente de execução do Node.js, tornando-o eficiente para construir aplicações, já que funções e objetos úteis já estão prontos para uso imediato.
+
+
+### `global`
+O objeto `global` é a "raiz" de todos os elementos globais no Node.js, similar ao objeto `window` em navegadores. Tudo que é colocado dentro do `global` estará acessível em qualquer lugar do código, mas isso não é uma prática recomendada (veremos por quê).
+
+**Analogia**: Pense no `global` como uma lousa enorme em uma sala de aula onde você pode escrever coisas para que todos os alunos vejam. Mas se todo mundo escrever lá, logo ficará confuso – por isso, em Node.js, não é recomendado adicionar novas variáveis ao `global`, pois isso pode causar conflitos ou erros inesperados.
+
+**Exemplo de uso:**
+```js
+global.minhaVariavel = 'Olá, mundo!';
+console.log(minhaVariavel);  // 'Olá, mundo!'
+```
+
+
+### `__dirname` e `__filename`
+Esses são "atalhos" para o caminho do diretório atual (`__dirname`) e o nome do arquivo atual (`__filename`). Eles são úteis quando você precisa de um caminho absoluto para acessar arquivos e pastas relativos ao arquivo que está sendo executado.
+
+**Analogia**: Imagine que `__dirname` é como uma etiqueta na sua pasta de trabalho que mostra onde ela está guardada em um armário. Assim, você sempre sabe onde encontrar suas coisas, mesmo se mudar de sala.
+
+**Exemplo de uso:**
+```js
+console.log(__dirname);  // Mostra o diretório onde o script está localizado
+console.log(__filename); // Mostra o caminho completo do arquivo atual
+```
+
+
+### `process`
+O objeto `process` contém informações sobre o processo atual em execução, como variáveis de ambiente, argumentos passados na linha de comando, e muito mais. Ele permite interagir com o sistema operacional em vários níveis.
+
+**Analogia**: Imagine `process` como uma caixa de controle que te permite ver informações sobre o ambiente em que você está trabalhando e até mesmo alterar como as coisas estão funcionando. Por exemplo, você pode ler configurações específicas de ambiente (como idioma ou região) e configurar o que precisar para se adaptar a esse ambiente.
+
+**Exemplo de uso:**
+```js
+console.log(process.env);         // Mostra as variáveis de ambiente
+console.log(process.argv);        // Mostra os argumentos passados na linha de comando
+console.log(process.memoryUsage()); // Mostra o uso de memória do processo
+```
+
+
+### `setTimeout`, `clearTimeout`, `setInterval` e `clearInterval`
+Essas funções permitem configurar e controlar temporizadores. `setTimeout` e `clearTimeout` ajudam a agendar e cancelar execuções futuras, enquanto `setInterval` e `clearInterval` configuram e cancelam execuções repetitivas.
+
+**Analogia**: É como definir um alarme (com `setTimeout`) ou um cronômetro que dispara repetidamente (`setInterval`). Assim, você consegue criar e controlar eventos que ocorrem após um determinado tempo.
+
+**Exemplo de uso:**
+```js
+const id = setTimeout(() => {
+    console.log('Ação executada depois de 2 segundos');
+}, 2000);
+
+clearTimeout(id); // Cancela o temporizador se necessário
+```
+
+
+
+# `process.stdout` e `process.stdin`
+
+- `process.stdout.write()` exibe EXATAMENTE o que você pede. Ele não funciona em navegadores, e não tem `\n` no final.
+- `process.stdin.on('data', data => {})` fica atento em qualquer entrada de dados do usuário.
+**Exemplo:**
+```js
+const ask = (index = 0) => process.stdout.write(questions[index] + ' ')
+
+
+const questions = [
+    'O que aprendi hoje?',
+    'O que me deixou aborrecido? E o que eu poderia fazer para melhorar?',
+    'O que me deixou feliz hoje?',
+    'Quantas pessoas ajudei hoje?',
+]
+
+ask()
+  
+let answers = []
+process.stdin.on('data', data => {
+    answers.push(data.toString().trim())
+    if (answers.length < questions.length) {
+        ask(answers.length)
+    } else {
+        process.stdout.write('\nRESPOSTAS\n\n');
+        for (let answer of answers) {
+            process.stdout.write(questions[answers.indexOf(answer)] + ' ' + answer + '\n')
+        }
+        process.exit()
+    }
+})
+```
+
+
+
+# **NPM (NODE PACKAGER MANAGER)**
+
+O NPM é um gerenciador de pacotes do Node, com ele, nós podemos instalar módulos que outros desenvolvedores criaram, e usar eles livremente em seu projeto.
+Para iniciar um projeto novo usando NPM, é só dar um `npm init`. Caso queira deixar tudo nas configurações padrão e aceitar todas as perguntas que ele fizer, `npm init -y`.
+
+
+# `PACKAGE.JSON`
+
+É o arquivo que especifica as configurações do seu projeto. Ele fala qual é o nome dele, qual é a versão, qual é o repositório do git, quais são as dependencies e as devDependencies, etc.
+
+## Dependencies
+São as dependências que o seu software precisa para ser executado corretamente. Assim, quando uma pessoa quiser instalar o seu software, ela terá que instalar os pacotes que estiverem dentro desse objeto. Essas são bibliotecas ou frameworks que seu software precisa para funcionar quando está sendo executado por um usuário final. Por exemplo, em um servidor web, a biblioteca `express` pode ser listada aqui, já que ela será usada diretamente pelo sistema em produção para lidar com as requisições HTTP.
+
+## DevDependencies
+São dependências usadas apenas no ambiente de desenvolvimento, como ferramentas de teste (ex.: `jest`), ferramentas de linting (ex.: `eslint`) ou compressores de arquivos. Essas dependências são essenciais para facilitar o trabalho do programador, mas não são necessárias para rodar o projeto em produção.
+
+
+## PORQUE EXISTEM AS DEPENDENCIES? PORQUE PRECISAMOS LISTÁ-LAS?
+
+Quando você terminou o seu projeto, você posta ele no GitHub, caso uma pessoa desejar usar o seu projeto, ela daria um `git clone` nele, e ao entrar na pasta do projeto clonado, a pessoa roda `npm install`. Esse comando lê o `package.json` e baixa todas as dependências listadas. O `npm` diferencia entre `dependencies` e `devDependencies`, instalando cada tipo de acordo com o ambiente:
+
+- Em ambiente de desenvolvimento, ele instala ambos os tipos.
+- Em produção, ele ignora as `devDependencies`, caso o comando seja executado com o parâmetro `--production` (`npm install --production`), economizando recursos. 
+
+
+# `PACKAGE-LOCK.JSON´
+
+É um arquivo .json onde ele faz o mapeamento de todos os seus módulos. É importante não deletar esse arquivo, e nem mexer nele, pois pode dar alguns problemas caso contrário.
+
+
+# NODE MODULES
+
+É um diretório bem grande onde ficam todos os módulos instalados. Você não precisa passar essa pasta no seu repositório, pois qualquer usuário pode dar um `npm install`, e todos os pacotes serão instalados normalmente.
+
+
+# SCRIPTS EM NPM
+
+Para definir um script, você vai no `package.json`, no objeto `scripts`, e define o script que você quer.
+
+Exemplo:
+`package.json`
+```json
+{
+  "name": "exercicio-006",
+  "version": "1.0.0",
+  "description": "Projeto para aprendizado",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Henrique Queiroz",
+  "license": "MIT",
+  "dependencies": {
+    "cfonts": "^3.3.0"
+  }
+}
+```
+Se rodarmos agora `npm run start` ou só `npm start` (pode ser sem o run porque `start` é um script especial do `npm`), o software será rodado.
+Detalhe: Qualquer outro script que você queira rodar, você precisa do `npm run`. O `npm start` só funciona porque é um script especial. Mas se fosse por exemplo um script chamado `dev`, você faria `npm run dev`. 
+
+
+
+
+
 # **PADRÕES DE PROJETO**
 
 # PROGRAMAÇÃO ORIENTADA À OBJETOS (POO)
@@ -168,10 +334,101 @@ pessoa.idade = -5;          // Saída: "Idade inválida. A idade deve ser um val
 console.log(pessoa.idade);  // A idade continua 25, pois o valor inválido foi rejeitado
 ```
 
+
 # `#` E `_` EM PROPRIEDADES
 
 - `#` Define uma propriedade privada, onde ela só pode ser usada dentro da classe, nunca fora dela.
 - `_` Define uma propriedade pública, porém que possui uma convenção visual de que algo é "privado", mas não impõe uma restrição real no uso dela.
+
+
+
+
+# **JAVASCRIPT ASSÍNCRONO**
+
+# PROMISES
+Uma promise (promessa) é uma promessa de que algo vai acontecer no futuro. Pode dar certo ou errado, mas irá acontecer
+
+
+# 4 ESTADOS DE UMA PROMISSE
+
+- `pending`: Estado inicial, assim que o Objeto da promessa é iniciado
+- `fulfilled`: A promessa foi concluída com sucesso
+- `rejected`: A promessa foi rejeitada, houve um erro
+- `settled`: Seja com sucessop ou com erro, ela foi finalmente concluída
+
+
+# PROMISSES NO CÓDIGO
+
+```js
+const promessa = new Promise ((resolve, reject) => {
+	if (true) {
+        return resolve('Pedido aceito!')
+    }
+    return reject('Pedido negado!')
+})
+
+promessa
+.then((result) => console.log(result))
+.catch((erro) => console.log(erro))
+.finally(() => console.log('finalizada'))
+```
+
+
+# `THEN`, `CATCH` E `FINALLY`
+
+Numa promisse, temos 3 eventos: `then`, `catch` e `finally`.
+- `then`: Quando a promessa for `fulfilled`, for concluída.
+- `catch`: Quando a promessa for `rejected`, for rejeitada.
+- `finally`: Quando a promessa for `settled`, o que fazer no final de tudo, independente do estado dela.
+
+
+
+# `ASYNC` E `AWAIT`
+
+Existe outra forma de definir uma promessa. Essa forma é usando o `async` e o `await`. Exemplo:
+
+```js
+const promessa = new Promise(function(resolve, reject) {
+    return resolve('ok')
+})
+
+async function start() {
+    try {
+        const result = await promessa
+        console.log(result)
+    } catch (e) {
+        console.log(e)
+    } finally {
+        console.log('rodar sempre')
+    }
+}
+```
+
+- A promessa é criada, com o seu `resolve` e `reject`. Normal.
+- A função `async` é criada, ela é o `start()`.
+- Tente criar uma constante chamada `result`, em que nela, iremos esperar (`await`) o resultado positivo da `promessa`.
+- Caso dê algo de errado (ex: recusar): pegue o erro (`e`) e mostre ele na tela.
+- Finalmente, mostre na tela `"rodar sempre"`, que é algo que sempre irá rodar, independente do resultado da promessa.
+
+#### Exemplo desse mesmo código só que em `then`, `catch` e `finally`:
+
+```js
+const promessa = new Promise(function(resolve, reject) {
+    return resolve('ok')
+})
+
+promessa
+    .then(function(response) {
+        console.log(response)
+    })
+    .catch(function(error) {
+        console.log(error)
+    })
+    .finally(function() {
+        console.log('Sempre irei executar')
+    })
+```
+
 
 
 
