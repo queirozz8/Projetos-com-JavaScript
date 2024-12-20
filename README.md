@@ -1,6 +1,6 @@
 <h1>ENGLISH VERSION</h1>
 
-<h1>My Projects Developed in JavaScript. <img src="https://skillicons.dev/icons?i=js" height="65" alt="JavaScript logo"></h1>
+<h1>My Projects Developed in JavaScript. <img src="https://img.shields.io/badge/JavaScript-black?style=flat-square&logo=javascript" height="40" alt="JavaScript logo"></h1>
 
 - "Simple Projects" is the directory where simple projects involving JavaScript that I created for learning are.
 
